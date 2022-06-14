@@ -12,20 +12,24 @@
   },
   "dependencies": {
     "@eth-optimism/hardhat-ovm": "^0.2.2",
-    "@nomiclabs/hardhat-etherscan": "^2.1.7",
+    "@ethereumjs/vm": "^5.9.2",
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
+    "@nomiclabs/hardhat-etherscan": "^2.1.7",
     "@nomiclabs/hardhat-waffle": "^2.0.0",
-    "@openzeppelin/contracts": "^3.2.0",
+    "@openzeppelin/contracts": "^4.6.0",
     "@tenderly/hardhat-tenderly": "^1.0.10",
+    "add": "^2.0.6",
     "chai": "^4.2.0",
     "chalk": "^4.1.0",
     "ethereum-waffle": "^3.1.1",
+    "ethereumjs-vm": "^4.2.0",
     "ethers": "^5.4.4",
     "hardhat": "2.6.0",
     "hardhat-deploy": "^0.9.0",
     "node-watch": "^0.7.0",
     "qrcode-terminal": "^0.12.0",
-    "ramda": "^0.27.1"
+    "ramda": "^0.27.1",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "chain": "hardhat node --network hardhat --no-deploy",
