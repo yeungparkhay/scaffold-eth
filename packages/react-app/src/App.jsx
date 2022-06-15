@@ -77,7 +77,7 @@ function App(props) {
 
   const [injectedProvider, setInjectedProvider] = useState();
   const [address, setAddress] = useState();
-  const [selectedNetwork, setSelectedNetwork] = useState(networkOptions[0]);
+  const [selectedNetwork, setSelectedNetwork] = useState(networkOptions[2]);
   const location = useLocation();
 
   const targetNetwork = NETWORKS[selectedNetwork];
@@ -320,7 +320,16 @@ function App(props) {
             */}
 
           <Contract
-            name="YourContract"
+            name="PriceFeed"
+            price={price}
+            signer={userSigner}
+            provider={localProvider}
+            address={address}
+            blockExplorer={blockExplorer}
+            contractConfig={contractConfig}
+          />
+          <Contract
+            name="VRF"
             price={price}
             signer={userSigner}
             provider={localProvider}

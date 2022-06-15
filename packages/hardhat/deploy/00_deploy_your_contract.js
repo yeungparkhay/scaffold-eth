@@ -1,5 +1,5 @@
 // deploy/00_deploy_your_contract.js
-
+require("dotenv").config();
 const { ethers } = require("hardhat");
 
 const localChainId = "31337";
@@ -17,16 +17,34 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
-  await deploy("YourContract", {
+  await deploy("PriceFeed", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
     // args: [ "Hello", ethers.utils.parseEther("1.5") ],
     log: true,
     waitConfirmations: 5,
+    gasPrice: 50000000000,
   });
 
   // Getting a previously deployed contract
-  const YourContract = await ethers.getContract("YourContract", deployer);
+  const PriceFeedContract = await ethers.getContract("PriceFeed", deployer);
+
+  await PriceFeedContract.transferOwnership(process.env.OWNER_ADDRESS);
+
+  await deploy("VRF", {
+    // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
+    from: deployer,
+    // args: [ "Hello", ethers.utils.parseEther("1.5") ],
+    log: true,
+    waitConfirmations: 5,
+    gasPrice: 50000000000,
+  });
+
+  // Getting a previously deployed contract
+  const VRFContract = await ethers.getContract("VRF", deployer);
+
+  await VRFContract.transferOwnership(process.env.OWNER_ADDRESS);
+
   /*  await YourContract.setPurpose("Hello");
   
     To take ownership of yourContract using the ownable library uncomment next line and add the 
